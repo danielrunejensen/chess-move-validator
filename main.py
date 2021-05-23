@@ -5,7 +5,7 @@ import sys
 import re 
 
 def parse_arguments():
-    my_parser = argparse.ArgumentParser(description='Validates a chess move')
+    my_parser = argparse.ArgumentParser(description='This is a limited chess move validator with support for the Pawn, Bishop and Rook.')
     my_parser.add_argument('move',
                            metavar='Move',
                            type=uci_regex,
@@ -18,11 +18,11 @@ def parse_arguments():
     my_parser.add_argument('-v',
                            '--verbose',
                            action="store_true",
-                           help='increase output verbosity')
+                           help='increase output verbosity for debugging')
     my_parser.add_argument('-d',
                            '--display',
                            action="store_true",
-                           help='display the board')
+                           help='prints the current setup of the chess board to the terminal')
 
 
     return my_parser.parse_args()

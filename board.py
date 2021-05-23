@@ -17,11 +17,15 @@ class Board:
             for x in range(0,8):
                 piece = self.get_piece(Coordinate(x, y))
                 if piece is None:
-                        representation += '   '
+                    pick = (y+x) % 2
+                    if pick == 0:
+                        representation += '□ '
+                    else:
+                        representation += '■ '
                 else:
-                    representation += piece.get_unicode() + '  '
+                    representation += piece.get_unicode() + ' '
             representation += '\n'
-        representation += '    a  b  c  d  e  f  g  h'
+        representation += '    a b c d e f g h'
         return str(representation)
 
     def get_piece(self, coordiate):
