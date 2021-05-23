@@ -35,7 +35,7 @@ python main.py a1a2
 {'move': 'Ra1-a2', 'valid': False, 'message': 'Pa2 is blocking the path '}
 ```
 
-Here is the same command again but this time with the display flag set. It will validate just the same but at the same time it will print a far from perfect chess board representation in yor terminal.
+Here is the same command again but this time with the display flag set. It will validate just the same but at the same time it will print a far from perfect chess board representation in your terminal.
 
 ```
 python main.py a1a2 --display
