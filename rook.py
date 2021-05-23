@@ -1,5 +1,5 @@
 from coordinate import Coordinate
-from piece import Piece, Type
+from piece import Color, Piece, Type
 
 
 class Rook(Piece):
@@ -35,3 +35,9 @@ class Rook(Piece):
               verdict = self.check_direction(
                 board, from_coordinate, to_coordinate, verdict, verbose, Coordinate.create_west)
         return verdict
+
+    def get_unicode_white(self):
+        return  '♖'
+
+    def get_unicode_black(self):
+        return  '♜'

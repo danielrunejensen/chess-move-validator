@@ -19,6 +19,11 @@ def parse_arguments():
                            '--verbose',
                            action="store_true",
                            help='increase output verbosity')
+    my_parser.add_argument('-d',
+                           '--display',
+                           action="store_true",
+                           help='display the board')
+
 
     return my_parser.parse_args()
 
@@ -35,14 +40,19 @@ def setup_regex(arg_value, pat=re.compile(r"^[BW][PRB][a-h][1-8](,[BW][PRB][a-h]
 def main():
     args = parse_arguments()
     verbose = args.verbose
-    
+    display = args.display
+    board = Board(args.setup)
+
+    if display:
+        print(board)
+
     from_coordinate = Coordinate.create_from_UCI(args.move[0:2])
     to_coordinate = Coordinate.create_from_UCI(args.move[2:4])
 
-    board = Board(args.setup)
+    if verbose:
+        print({'from_coordinate': from_coordinate, 'to_coordinate': to_coordinate})
 
     piece = board.get_piece(from_coordinate)
-
     if piece is None:      
         verdict = {'valid': False, 'message': 'no piece located at from coordinate'}
     else:

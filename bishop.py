@@ -36,3 +36,9 @@ class Bishop(Piece):
                 board, from_coordinate, to_coordinate, verdict, verbose, Coordinate.create_south_west)
 
         return verdict
+
+    def get_unicode_white(self):
+        return  "♗"
+
+    def get_unicode_black(self):
+        return  "♝"

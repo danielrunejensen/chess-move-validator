@@ -10,6 +10,19 @@ class Board:
             self.layout = self.empty_layout()
             self.setup_board(setup)
 
+    def __repr__(self) -> str:
+        representation = ''
+        for y in range(0,8):
+            representation += Coordinate.y_to_uci_int(y) + '   '
+            for x in range(0,8):
+                piece = self.get_piece(Coordinate(x, y))
+                if piece is None:
+                        representation += '   '
+                else:
+                    representation += piece.get_unicode() + '  '
+            representation += '\n'
+        representation += '    a  b  c  d  e  f  g  h'
+        return str(representation)
 
     def get_piece(self, coordiate):
         return self.layout[coordiate.y][coordiate.x]
@@ -36,8 +49,6 @@ class Board:
             piece = self.create_piece(annotation)
             coordinate = Coordinate.create_from_UCI(annotation[2:4])
             self.set_piece(coordinate, piece)
-        
-        print(self.layout)
 
     def create_piece(self, annotation):
         type = self.get_type(annotation)

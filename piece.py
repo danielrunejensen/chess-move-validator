@@ -15,7 +15,7 @@ class Piece:
         self.color = color
 
     def __repr__(self) -> str:
-        return str({'type': self.type, 'color': self.color})
+        return str({'unicode': self.get_unicode(), 'type': self.type, 'color': self.color})
 
     def validate_move(self, board, from_coordinate, to_coordinate, verbose):
         verdict = {'move': self.type.value + from_coordinate.getUCI() +
@@ -88,3 +88,9 @@ class Piece:
             verdict['valid'] = False
 
         return verdict
+
+    def get_unicode(self):
+        if self.color == Color.WHITE:
+            return self.get_unicode_white()
+        else:
+            return self.get_unicode_black()

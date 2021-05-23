@@ -10,26 +10,26 @@ class Pawn(Piece):
         moves = []
 
         if self.color is Color.WHITE:
-            moves.append(Coordinate.create_north_coordinate(from_coordinate))
+            moves.append(Coordinate.create_north(from_coordinate))
 
-            south_west_coordinate = Coordinate.create_north_west_coordinate(from_coordinate)
+            south_west_coordinate = Coordinate.create_north_west(from_coordinate)
             piece = board.get_piece(south_west_coordinate)
             if piece is not None and piece.color is Color.BLACK:
                 moves.append(south_west_coordinate)
 
-            south_east_coordinate = Coordinate.create_north_east_coordinate(from_coordinate)
+            south_east_coordinate = Coordinate.create_north_east(from_coordinate)
             piece = board.get_piece(south_east_coordinate)
             if piece is not None and piece.color is Color.BLACK:
                 moves.append(south_east_coordinate)
         else:
-            moves.append(Coordinate.create_south_coordinate(from_coordinate))
+            moves.append(Coordinate.create_south(from_coordinate))
 
-            south_west_coordinate = Coordinate.create_south_west_coordinate(from_coordinate)
+            south_west_coordinate = Coordinate.create_south_west(from_coordinate)
             piece = board.get_piece(south_west_coordinate)
             if piece is not None and piece.color is Color.WHITE:
                 moves.append(south_west_coordinate)
 
-            south_east_coordinate = Coordinate.create_south_east_coordinate(from_coordinate)
+            south_east_coordinate = Coordinate.create_south_east(from_coordinate)
             piece = board.get_piece(south_east_coordinate)
             if piece is not None and piece.color is Color.WHITE:
                 moves.append(south_east_coordinate)
@@ -52,3 +52,9 @@ class Pawn(Piece):
                 to_coordinate.getUCI() + ' will be captured'
         
         return verdict
+
+    def get_unicode_white(self):
+        return  '♙'
+
+    def get_unicode_black(self):
+        return  '♟︎'
